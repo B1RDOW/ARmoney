@@ -1,8 +1,0 @@
-name: ARmoney
-main: ARmoney.BIRDOW.ARmain
-version: 1.1.1
-api-version: 1.18
-softdepend: [ Vault ]
-authors: [ BIRDOW ]
-commands:
-   ar: {}
