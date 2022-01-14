@@ -14,8 +14,8 @@ __Spigot: https://www.spigotmc.org/resources/armoney-1-1-0.97991/__
 ### Конфиг по умолчанию:
 ```
 messages:
-  lack_of_ore: "&cНехватает руды! &fНужно ещё &a{count} АР"
-  lack_of_ar: "&cНехватает денег! &fНужно ещё &a{count} АР"
+  lack_of_ore: "&cНе хватает руды! &fНужно ещё &a{count} АР"
+  lack_of_ar: "&cНе хватает денег! &fНужно ещё &a{count} АР"
   sell_success: "&fВы положили на счёт &a{count} АР"
   get_success: "&fВы вывели со счёта &a{count} АР"
   auto_add: "&fВам был автоматически начислен &a{count} АР"
