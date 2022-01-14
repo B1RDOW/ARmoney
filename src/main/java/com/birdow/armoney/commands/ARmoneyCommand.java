@@ -95,9 +95,17 @@ public class ARmoneyCommand extends AbstractCommand implements Listener {
             for (ItemStack item : p.getInventory().getContents()) {
                 if (item != null) {
                     if (item.getType() == Material.DIAMOND_ORE) diamondOreInInventory += item.getAmount();
-                    if (item.getType() == Material.DEEPSLATE_DIAMOND_ORE)
-                        deepslateDiamondOreInInventory += item.getAmount();
+                    if (item.getType() == Material.DEEPSLATE_DIAMOND_ORE) deepslateDiamondOreInInventory += item.getAmount();
                 }
+            }
+
+            ItemStack leftHand = p.getInventory().getItemInOffHand();
+            ItemStack helmet = p.getInventory().getHelmet();
+            if (leftHand.getType() == Material.DIAMOND_ORE) diamondOreInInventory -= leftHand.getAmount();
+            if (leftHand.getType() == Material.DEEPSLATE_DIAMOND_ORE) deepslateDiamondOreInInventory -= leftHand.getAmount();
+            if (helmet != null) {
+                if (helmet.getType() == Material.DIAMOND_ORE) diamondOreInInventory -= helmet.getAmount();
+                if (helmet.getType() == Material.DEEPSLATE_DIAMOND_ORE) deepslateDiamondOreInInventory -= helmet.getAmount();
             }
 
             int requestedDiamondTradeIn;
@@ -170,8 +178,10 @@ public class ARmoneyCommand extends AbstractCommand implements Listener {
                         economy.withdrawPlayer(p, requestedDiamonds - i.getAmount());
                         Message.get_success.replace("{count}", String.valueOf(requestedDiamonds - i.getAmount())).send(p);
                         Message.inventory_is_full.replace("{count}", String.valueOf(i.getAmount())).send(p);
-                    } return;
+                        return;
+                    }
                 } else {
+                    economy.withdrawPlayer(p, requestedDiamonds);
                     Message.get_success.replace("{count}", String.valueOf(requestedDiamonds)).send(p);
                 }
             } return;
